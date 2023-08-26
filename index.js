@@ -1,13 +1,33 @@
 import express from "express";
+import bodyParser from "body-parser";
 import axios from "axios";
 
 const app = express();
 const port = 3000;
 
+const API_TOKEN = "fb53451ee89052f1ce893b7f8e408a0cdde9ff7b";
+
+const BASE_URL = "https://api.waqi.info";
+
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
+});
+
+app.post("/", async (req, res) => {
+    try{
+        const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
+        res.render("index.ejs", {
+            cityName: response.data.data.city.name,
+            airQuality: response.data.data.aqi,
+        })
+    }catch(error){
+        res.render("index.ejs", {
+            errorMessage: `The city "${req.body.city}" is not available in the API. Please enter a different city name.`,
+        })
+    }
 });
 
 app.listen(port, () => {
