@@ -1,44 +1,42 @@
 <body>
     <%- include("partials/header.ejs") %>
-    <div class="container-fluid px-8">
-        <div class="row gx-5">
-            <div class="col" style="background-color: #202b3b;">
-                <div class="row gy-5">
-                    <div class="col">
-                        <form action="/" method="post">
-                            <input type="text" name="city" id="" autocomplete="off" placeholder="Search for cities">
-                        </form>
-                        <% if (locals.errorMessage) { %>
-                            <div class="error">
-                                <p><%= errorMessage %></p>
-                            </div>
-                        <% } else if(locals.cityName && locals.airQuality){ %>
-                            <div class="content">
-                                <p>City Name: <%= cityName %></p>
-                                <p>Air Quality: <%= airQuality %></p>
-                            </div>
-                        <% } else {%>
-                            <div class="content">
-                                <p>Enter a city name!</p>
-                            </div>
-                        <% } %>
-                    </div>     
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="p-3 border">
+                <div class="input-container">
+                    <form action="/" method="post">
+                        <input type="text" name="city" id="" autocomplete="off" placeholder="Search for cities">
+                    </form>
+                    <% if (locals.errorMessage) { %>
+                        <div class="error">
+                            <p><%= errorMessage %></p>
+                        </div>
+                    <% } else if(locals.cityName && locals.airQuality){ %>
+                        <div class="content">
+                            <p>City Name: <%= cityName %></p>
+                            <p>Air Quality: <%= airQuality %></p>
+                        </div>
+                    <% } else {%>
+                        <div class="content">
+                            <p>Enter a city name!</p>
+                        </div>
+                    <% } %>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <h1>Todays Forecast</h1>
-                    </div>
+                <div class="today-forecast">
+                    <h1>Today Forecast</h1>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <h1>Air Quality</h1>
-                    </div>
+                <div>
+                    <h1>Air Conditions</h1>
                 </div>
             </div>
-            <div class="col" style="background-color: #202b3b;">
-                <h1>7-day Forecast</h1>
+          </div>
+          <div class="col">
+            <div class="p-3 border">
+                <h1>7 day forecast</h1>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 </body>
 </html>
