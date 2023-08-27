@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
+app.get("/map", (req, res) => {
+    res.render("maps.ejs");
+});
+
 app.post("/", async (req, res) => {
     try{
         const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
