@@ -25,7 +25,7 @@ app.post("/", async (req, res) => {
         })
     }catch(error){
         res.render("index.ejs", {
-            errorMessage: `The city "${req.body.city}" is not available in the API. Please enter a different city name.`,
+            errorMessage: `The city "${req.body.city}" data is not available. Please try a different city.`,
         })
     }
 });
