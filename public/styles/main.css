@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #0b131e;
+    color: #f0f1f1;
 }
 form {
     margin-bottom: 20px;
