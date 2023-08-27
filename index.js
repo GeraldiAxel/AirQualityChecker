@@ -23,6 +23,7 @@ app.get("/map", (req, res) => {
 app.post("/", async (req, res) => {
     try{
         const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
+        console.log(response.data.data.forecast.daily.pm10);
         res.render("index.ejs", {
             cityName: response.data.data.city.name,
             airQuality: response.data.data.aqi,
