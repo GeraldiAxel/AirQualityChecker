@@ -3,6 +3,7 @@ body {
     text-align: center;
     background-color: #0b131e;
     color: #f0f1f1;
+    height: 100%;
 }
 .error {
     color: red;
@@ -12,6 +13,23 @@ body {
     height: 60vh;
     border-radius: 10px;
 }
-.container-fluid{
-    padding: 2rem;
+/* form input{
+    width: 100%;
+    text-align: center;
+    background-color: #202b3b !important;
+    border: none !important;
+    color: #fff !important;
+} */
+.input-container, .today-forecast, .air-conditions{
+    background-color: green;
+    margin: 20px 0;
+}
+.seven-day-forecast{
+    background-color: green;
+    margin: 20px 0;
+}
+.left-container, .right-container{
+    min-height: 100%;
+    height:auto !important; /* cross-browser */
+    height: 100%; /* cross-browser */
 }

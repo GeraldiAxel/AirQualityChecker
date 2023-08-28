@@ -1,12 +1,11 @@
 <body>
     <%- include("partials/header.ejs") %>
-    <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <div class="p-3 border">
+    <div id="main-section" class="">
+        <div class="">
+          <div class="">
                 <div class="input-container">
                     <form action="/" method="post">
-                        <input type="text" name="city" id="" autocomplete="off" placeholder="Search for cities">
+                        <input type="text" name="city" id="city_input" autocomplete="off" placeholder="Search for cities" class="form-control">
                     </form>
                     <% if (locals.errorMessage) { %>
                         <div class="error">
@@ -14,25 +13,20 @@
                         </div>
                     <% } else if(locals.cityName && locals.airQuality){ %>
                         <div class="content">
-                            <p>City Name: <%= cityName %></p>
+                            <h1><%= cityName %></h1>
                             <p>Air Quality: <%= airQuality %></p>
                         </div>
-                    <% } else {%>
-                        <div class="content">
-                            <p>Enter a city name!</p>
-                        </div>
-                    <% } %>
+                    <% }%>
                 </div>
                 <div class="today-forecast">
                     <h1>Today Forecast</h1>
                 </div>
-                <div>
+                <div class="air-conditions">
                     <h1>Air Conditions</h1>
                 </div>
-            </div>
           </div>
-          <div class="col">
-            <div class="p-3 border">
+          <div class="">
+            <div class="seven-day-forecast">
                 <h1>7 day forecast</h1>
             </div>
           </div>
