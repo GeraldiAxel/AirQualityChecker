@@ -7,32 +7,37 @@
                     <input type="text" name="city" id="city_input" autocomplete="off" placeholder="Search for cities" class="form-control">
                 </form>
                 <div class="result-section">
-                    <% if (locals.errorMessage) { %>
-                        <div class="error">
-                            <p><%= errorMessage %></p>
-                        </div>
-                    <% } else if(locals.cityName && locals.airQuality){ %>
-                        <div class="content">
-                            <h1><%= cityName %></h1>
-                            <p>Air Quality: <%= airQuality %></p>
-                        </div>
-                    <% }%>
+                    <div class="info">
+                        <% if (locals.errorMessage) { %>
+                            <div class="error">
+                                <p><%= errorMessage %></p>
+                            </div>
+                        <% } else if(locals.cityName && locals.airQuality){ %>
+                            <div class="content">
+                                <h1><%= cityName %></h1>
+                                <p>Air Quality: <%= airQuality %></p>
+                            </div>
+                        <% }%>
+                    </div>
+                    <div class="image">
+
+                    </div>
+                    
                 </div>
             </div>
-            <div class="today-forecast border">
+            <div class="today-forecast">
 
             </div>
-            <div class="air-conditions border">
+            <div class="air-conditions">
 
             </div>
         </div>
         <div class="right-section">
-            <div class="seven-day-forecast border">
+            <div class="seven-day-forecast">
                 <% if (locals.weekly) { %>
                     <% for(let i = 0 ; i < weekly.length ; i++) { %>
                         <div class="daily">
-                            <%= weekly[i].avg %>
-                            <%= weekly[i].day %>
+                            Air Quality: <%= weekly[i].avg %>, Date: <%= weekly[i].day %>
                         </div>
                     <% } %>
                 <% } %>

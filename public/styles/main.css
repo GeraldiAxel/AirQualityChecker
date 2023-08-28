@@ -19,12 +19,22 @@ form input{
     background-color: #202b3b !important;
     border: none !important;
     color: #fff !important;
+    border-radius: 15px !important;
 }
-.input-container, .today-forecast, .air-conditions{
-    height: 31%;
+.today-forecast{
+    margin-bottom: 20px;
+    flex-grow: 1.7;
+    background-color: #202b3b;
+    border-radius: 25px;
 }
-.input-container, .today-forecast{
-    margin-bottom: 40px;
+.air-conditions{
+    flex-grow: 1.7;
+    background-color: #202b3b;
+    border-radius: 25px;
+}
+.input-container{
+    flex-grow: 2;
+    margin-bottom: 20px;
 }
 .seven-day-forecast{
     height: 100%;
@@ -35,19 +45,26 @@ form input{
     display: flex;
     flex-direction: row;
     height: 92vh;
+    padding: 40px;
+    gap: 20px;
 }
 .left-section{
     display: flex;
     flex-direction: column;
-    width: 50%;
     height: 100%;
-    padding: 20px;
+    flex-grow: 1.2;
 }
 .right-section{
-    width: 50%;
+    flex-grow: 1;
+    flex-shrink: 0;
     height: 100%;
-    padding: 20px;
+    background-color: #202b3b;
+    border-radius: 25px;
 }
 .daily{
     flex-grow: 1;
+    z-index: 100;
+}
+.result-section{
+    padding: 20px;
 }
