@@ -13,23 +13,36 @@ body {
     height: 60vh;
     border-radius: 10px;
 }
-/* form input{
+form input{
     width: 100%;
     text-align: center;
     background-color: #202b3b !important;
     border: none !important;
     color: #fff !important;
-} */
+}
 .input-container, .today-forecast, .air-conditions{
-    background-color: green;
-    margin: 20px 0;
+    height: 31%;
+}
+.input-container, .today-forecast{
+    margin-bottom: 40px;
 }
 .seven-day-forecast{
-    background-color: green;
-    margin: 20px 0;
+    height: 100%;
 }
-.left-container, .right-container{
-    min-height: 100%;
-    height:auto !important; /* cross-browser */
-    height: 100%; /* cross-browser */
+.main-section{
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+}
+.left-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}
+.right-section{
+    width: 50%;
+    height: 100%;
+    padding: 20px;
 }

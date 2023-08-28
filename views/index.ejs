@@ -1,12 +1,12 @@
 <body>
     <%- include("partials/header.ejs") %>
-    <div id="main-section" class="">
-        <div class="">
-          <div class="">
-                <div class="input-container">
-                    <form action="/" method="post">
-                        <input type="text" name="city" id="city_input" autocomplete="off" placeholder="Search for cities" class="form-control">
-                    </form>
+    <div class="main-section">
+        <div class="left-section">
+            <div class="input-container border">
+                <form action="/" method="post">
+                    <input type="text" name="city" id="city_input" autocomplete="off" placeholder="Search for cities" class="form-control">
+                </form>
+                <div class="result-section">
                     <% if (locals.errorMessage) { %>
                         <div class="error">
                             <p><%= errorMessage %></p>
@@ -18,19 +18,19 @@
                         </div>
                     <% }%>
                 </div>
-                <div class="today-forecast">
-                    <h1>Today Forecast</h1>
-                </div>
-                <div class="air-conditions">
-                    <h1>Air Conditions</h1>
-                </div>
-          </div>
-          <div class="">
-            <div class="seven-day-forecast">
-                <h1>7 day forecast</h1>
             </div>
-          </div>
+            <div class="today-forecast border">
+
+            </div>
+            <div class="air-conditions border">
+
+            </div>
         </div>
-      </div>
+        <div class="right-section">
+            <div class="seven-day-forecast border">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
