@@ -28,7 +28,14 @@
         </div>
         <div class="right-section">
             <div class="seven-day-forecast border">
-
+                <% if (locals.weekly) { %>
+                    <% for(let i = 0 ; i < weekly.length ; i++) { %>
+                        <div class="daily">
+                            <%= weekly[i].avg %>
+                            <%= weekly[i].day %>
+                        </div>
+                    <% } %>
+                <% } %>
             </div>
         </div>
     </div>

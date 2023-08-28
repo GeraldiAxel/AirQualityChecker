@@ -28,6 +28,8 @@ form input{
 }
 .seven-day-forecast{
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .main-section{
     display: flex;
@@ -45,4 +47,7 @@ form input{
     width: 50%;
     height: 100%;
     padding: 20px;
+}
+.daily{
+    flex-grow: 1;
 }

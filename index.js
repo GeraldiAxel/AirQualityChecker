@@ -27,6 +27,7 @@ app.post("/", async (req, res) => {
         res.render("index.ejs", {
             cityName: response.data.data.city.name,
             airQuality: response.data.data.aqi,
+            weekly: response.data.data.forecast.daily.pm10,
         })
     }catch(error){
         res.render("index.ejs", {
