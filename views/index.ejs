@@ -46,8 +46,11 @@
                 <% if (locals.weekly) { %>
                     <% for(let i = 0 ; i < weekly.length ; i++) { %>
                         <div class="daily">
-                            Air Quality: <%= weekly[i].avg %>, Date: <%= weekly[i].day %>
+                            pm10 Average: <%= weekly[i].avg %>, Date: <%= weekly[i].day %>
                         </div>
+                        <% if(i !== weekly.length-1) { %>
+                            <hr class="solid">
+                        <% } %>
                     <% } %>
                 <% } %>
             </div>

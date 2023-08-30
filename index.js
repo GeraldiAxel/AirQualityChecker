@@ -32,10 +32,6 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", defaultCityData);
 });
 
-app.get("/map", (req, res) => {
-    res.render("maps.ejs");
-});
-
 app.post("/", async (req, res) => {
     try{
         const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
@@ -47,7 +43,7 @@ app.post("/", async (req, res) => {
         })
     }catch(error){
         res.render("index.ejs", {
-            errorMessage: `The city "${req.body.city}" data is not available. Please try a different city.`,
+            errorMessage: `The city "${req.body.city}" is not available. Please try a different city.`,
         })
     }
 });
