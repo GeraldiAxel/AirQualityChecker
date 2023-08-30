@@ -10,8 +10,8 @@ body {
     font-weight: bold;
 }
 #map{
-    height: 60vh;
-    border-radius: 10px;
+    height: 100%;
+    border-radius: 25px;
 }
 form input{
     width: 100%;
@@ -22,18 +22,13 @@ form input{
     border-radius: 15px !important;
 }
 .today-forecast{
-    margin-bottom: 20px;
-    flex-grow: 1.7;
+    flex-grow: 2;
     background-color: #202b3b;
     border-radius: 25px;
-}
-.air-conditions{
-    flex-grow: 1.7;
-    background-color: #202b3b;
-    border-radius: 25px;
+    padding: 0;
 }
 .input-container{
-    flex-grow: 2;
+    flex-grow: 1;
     margin-bottom: 20px;
 }
 .seven-day-forecast{
@@ -44,7 +39,7 @@ form input{
 .main-section{
     display: flex;
     flex-direction: row;
-    height: 92vh;
+    height: 100vh;
     padding: 40px;
     gap: 20px;
 }
@@ -55,7 +50,7 @@ form input{
     flex-grow: 1.2;
 }
 .right-section{
-    flex-grow: 1;
+    width: 33%;
     flex-shrink: 0;
     height: 100%;
     background-color: #202b3b;
