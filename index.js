@@ -16,6 +16,7 @@ async function fetchDefaultCityData() {
             cityName: response.data.data.city.name,
             airQuality: response.data.data.aqi,
             weekly: response.data.data.forecast.daily.pm10,
+            location: response.data.data.city.geo,
         };
     } catch (error) {
         return {
@@ -35,11 +36,12 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
     try{
         const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
-        console.log(response.data.data.forecast);
+        console.log(response.data.data);
         res.render("index.ejs", {
             cityName: response.data.data.city.name,
             airQuality: response.data.data.aqi,
             weekly: response.data.data.forecast.daily.pm10,
+            location: response.data.data.city.geo,
         })
     }catch(error){
         res.render("index.ejs", {

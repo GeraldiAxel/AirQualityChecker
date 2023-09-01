@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #0b131e;
     color: #f0f1f1;
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 .error {
     color: red;
@@ -22,14 +25,15 @@ form input{
     border-radius: 15px !important;
 }
 .today-forecast{
-    flex-grow: 2;
+    height: 50%;
     background-color: #202b3b;
     border-radius: 25px;
     padding: 0;
 }
 .input-container{
-    flex-grow: 1;
+    height: 50%;
     margin-bottom: 20px;
+    padding: 0;
 }
 .seven-day-forecast{
     height: 100%;
@@ -69,5 +73,22 @@ form input{
     margin: 0 40px;
 }
 .result-section{
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    flex-direction: row;
+    gap: 80px;
+}
+.info{
+    width: 100%;
+}
+.result-section .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    height: 50%;
+    gap: 20px;
 }
