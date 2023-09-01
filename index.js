@@ -17,6 +17,7 @@ async function fetchDefaultCityData() {
             airQuality: response.data.data.aqi,
             weekly: response.data.data.forecast.daily.pm10,
             location: response.data.data.city.geo,
+            cityForMap: 'jakarta'
         };
     } catch (error) {
         return {
@@ -42,6 +43,7 @@ app.post("/", async (req, res) => {
             airQuality: response.data.data.aqi,
             weekly: response.data.data.forecast.daily.pm10,
             location: response.data.data.city.geo,
+            cityForMap: req.body.city,
         })
     }catch(error){
         res.render("index.ejs", {
