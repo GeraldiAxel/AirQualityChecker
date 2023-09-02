@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <link rel="stylesheet" href="/styles/layout.css">
   <link rel="stylesheet" href="/styles/main.css">
   <title>Air Quality Index</title>
@@ -26,8 +27,8 @@
                         <% } else if(locals.cityName && locals.airQuality){ %>
                             <div class="content">
                                 <h1 id="cityNameDisplay"><%= cityName %></h1>
-                                <h5>Air Quality: <%= airQuality %></h5>
-                                <div id="city-aqi-container-display"></div>
+                                <h2>Air Quality: <%= airQuality %></h2>
+                                <h3 id="level-warning"></h3>
                             </div>
                         <% }%>
                     </div>
@@ -54,42 +55,42 @@
         </div>
     </div>
     <script>
-        let lat = '<%= location[0] %>';
-        let long = '<%= location[1] %>';
-        var map = new google.maps.Map(document.getElementById('map'), {  
-            center: new google.maps.LatLng(lat, long),  
-            mapTypeId: google.maps.MapTypeId.ROADMAP,  
-            zoom: 7  
-        });
+        if('<%= location[0] %>'){
+            let lat = '<%= location[0] %>';
+            let long = '<%= location[1] %>';
+            var map = new google.maps.Map(document.getElementById('map'), {  
+                center: new google.maps.LatLng(lat, long),  
+                mapTypeId: google.maps.MapTypeId.ROADMAP,  
+                zoom: 7  
+            });
 
-        var t = new Date().getTime();  
-        var waqiMapOverlay =  new google.maps.ImageMapType({  
-            getTileUrl: function(coord, zoom) {  
-                return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=_TOKEN_ID_";  
-            },
-            name: "Air Quality",  
-        });  
+            var t = new Date().getTime();  
+            var waqiMapOverlay =  new google.maps.ImageMapType({  
+                getTileUrl: function(coord, zoom) {  
+                    return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=_TOKEN_ID_";  
+                },
+                name: "Air Quality",  
+            });  
 
-        map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+            map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+        }
     </script>
-    <script type="text/javascript">
-        (function(w,d,t,f){
-            w[f]=w[f]||function(c,k,n){
-                s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));
-                s['c']=c=(c instanceof Array)?c:[c];
-                s['n']=n=n||0;
-                L=d.createElement(t),e=d.getElementsByTagName(t)[0];
-                L.async=1;
-                L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;
-                e.parentNode.insertBefore(L,e);
-            };
-        })(window, document, 'script', '_aqiFeed');
-
-        _aqiFeed({
-            display: "<div style='%style;max-width:180px;text-align:center;'><small>%cityname AQI:</small> <div style='font-size:88px;height:140px;'>%aqiv</div> %impact</div>",
-            container: "city-aqi-container-display",
-            city: '<%= cityForMap %>'
-        });
+    <script>
+        let airLevel = '<%= airQuality %>';
+        if(airLevel>=0 && airLevel<=50){
+            $("#level-warning").text("Good").css('color', '#009966');;
+        }else if(airLevel>=51 && airLevel<=100){
+            $("#level-warning").text("Moderate").css('color', '#ffde33');;
+        }else if(airLevel>=101 && airLevel<=150){
+            $("#level-warning").text("Unhealthy for Sensitive Groups").css('color', '#ffde33');;
+        }else if(airLevel>=151 && airLevel<=200){
+            $("#level-warning").text("Unhealthy").css('color', '#ffde33');;
+        }else if(airLevel>=201 && airLevel<=300){
+            $("#level-warning").text("Very Unhealthy").css('color', '#ffde33');;
+        }else if(airLevel>=301){
+            $("#level-warning").text("Hazardous").css('color', '#ffde33');;
+        }
+        
     </script>
 </body>
 </html>
