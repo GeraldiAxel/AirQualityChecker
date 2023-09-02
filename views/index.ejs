@@ -44,7 +44,8 @@
                 <% if (locals.weekly) { %>
                     <% for(let i = 0 ; i < weekly.length ; i++) { %>
                         <div class="daily">
-                            pm10 Average: <%= weekly[i].avg %>, Date: <%= weekly[i].day %>
+                            <p> <%= new Date(weekly[i].day).toLocaleString("en-US", {weekday: "long"}) %></p>
+                            <p>Air Quality: <%= weekly[i].avg %></p>
                         </div>
                         <% if(i !== weekly.length-1) { %>
                             <hr class="solid">

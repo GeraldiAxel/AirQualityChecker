@@ -63,9 +63,13 @@ form input{
 .daily{
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin: 0 40px;
+}
+.daily p{
+    margin: 0;
+    padding: 0;
 }
 .solid{
     border-top: 2px solid #4d5664;
