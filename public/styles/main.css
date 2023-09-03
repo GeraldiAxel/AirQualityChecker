@@ -63,9 +63,10 @@ form input{
 .daily{
     flex-grow: 1;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin: 0 40px;
+    padding: 0 40px;
 }
 .daily p{
     margin: 0;
