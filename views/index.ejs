@@ -56,9 +56,9 @@
         </div>
     </div>
     <script>
-        if('<%= location[0] %>'){
-            let lat = '<%= location[0] %>';
-            let long = '<%= location[1] %>';
+        if('<%= locals.location && locals.location.length >= 2 %>'){
+            let lat = '<%= locals.location[0] %>';
+            let long = '<%= locals.location[1] %>';
             var map = new google.maps.Map(document.getElementById('map'), {  
                 center: new google.maps.LatLng(lat, long),  
                 mapTypeId: google.maps.MapTypeId.ROADMAP,  
@@ -74,6 +74,9 @@
             });  
 
             map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+        }else {
+            // Handle the case when location is not available
+            console.log("Location data not available.");
         }
     </script>
     <script>

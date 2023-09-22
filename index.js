@@ -31,8 +31,17 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", async (req, res) => {
     const defaultCityData = await fetchDefaultCityData();
-    res.render("index.ejs", defaultCityData);
+    const dataToRender = {
+        cityName: defaultCityData.cityName,
+        airQuality: defaultCityData.airQuality,
+        weekly: defaultCityData.weekly,
+        cityForMap: defaultCityData.cityForMap,
+        location: defaultCityData.location, // Include location here
+    };
+
+    res.render("index.ejs", dataToRender);
 });
+
 
 app.post("/", async (req, res) => {
     try{
