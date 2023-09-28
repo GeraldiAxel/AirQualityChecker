@@ -36,7 +36,7 @@ app.get("/", async (req, res) => {
         airQuality: defaultCityData.airQuality,
         weekly: defaultCityData.weekly,
         cityForMap: defaultCityData.cityForMap,
-        location: defaultCityData.location, // Include location here
+        location: defaultCityData.location,
     };
 
     res.render("index.ejs", dataToRender);
@@ -46,17 +46,27 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
     try{
         const response = await axios.get(BASE_URL + `/feed/${req.body.city}/?token=${API_TOKEN}`);
-        console.log(response.data.data);
+        // console.log(response.data.data);
         res.render("index.ejs", {
             cityName: response.data.data.city.name,
             airQuality: response.data.data.aqi,
             weekly: response.data.data.forecast.daily.pm10,
             location: response.data.data.city.geo,
             cityForMap: req.body.city,
-        })
+        });
     }catch(error){
-        res.render("index.ejs", {
+        // console.log(error);
+        const defaultCityData = await fetchDefaultCityData();
+        const dataToRender = {
+            cityName: defaultCityData.cityName,
+            airQuality: defaultCityData.airQuality,
+            weekly: defaultCityData.weekly,
+            cityForMap: defaultCityData.cityForMap,
+            location: defaultCityData.location,
+        };
+        res.status(404).render("index.ejs", {
             errorMessage: `The city "${req.body.city}" is not available. Please try a different city.`,
+            dataToRender,
         })
     }
 });
