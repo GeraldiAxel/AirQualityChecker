@@ -55,45 +55,47 @@
             </div>
         </div>
     </div>
-    <script>
-        console.log('<%= locals.location %>');
-        if('<%= location[0] %>' && '<%= location[1] %>'){
-            let lat = '<%= location[0] %>';
-            let long = '<%= location[1] %>';
-            var map = new google.maps.Map(document.getElementById('map'), {  
-                center: new google.maps.LatLng(lat, long),  
-                mapTypeId: google.maps.MapTypeId.ROADMAP,  
-                zoom: 7  
-            });
+    <% if(locals.location) {%>
+        <script>
+            console.log('<%= locals.location %>');
+            if('<%= location[0] %>' && '<%= location[1] %>'){
+                let lat = '<%= location[0] %>';
+                let long = '<%= location[1] %>';
+                var map = new google.maps.Map(document.getElementById('map'), {  
+                    center: new google.maps.LatLng(lat, long),  
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,  
+                    zoom: 7  
+                });
 
-            var t = new Date().getTime();  
-            var waqiMapOverlay =  new google.maps.ImageMapType({  
-                getTileUrl: function(coord, zoom) {  
-                    return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=_TOKEN_ID_";  
-                },
-                name: "Air Quality",  
-            });  
+                var t = new Date().getTime();  
+                var waqiMapOverlay =  new google.maps.ImageMapType({  
+                    getTileUrl: function(coord, zoom) {  
+                        return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=_TOKEN_ID_";  
+                    },
+                    name: "Air Quality",  
+                });  
 
-            map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
-        }else {
-            console.log("Location data not available.");
-        }
+                map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+            }else {
+                console.log("Location data not available.");
+            }
 
-        //quality indicator label
-        let airLevel = '<%= airQuality %>';
-        if(airLevel>=0 && airLevel<=50){
-            $("#level-warning").text("Good").css('color', '#009966');;
-        }else if(airLevel>=51 && airLevel<=100){
-            $("#level-warning").text("Moderate").css('color', '#ffde33');;
-        }else if(airLevel>=101 && airLevel<=150){
-            $("#level-warning").text("Unhealthy for Sensitive Groups").css('color', '#ffde33');;
-        }else if(airLevel>=151 && airLevel<=200){
-            $("#level-warning").text("Unhealthy").css('color', '#ffde33');;
-        }else if(airLevel>=201 && airLevel<=300){
-            $("#level-warning").text("Very Unhealthy").css('color', '#ffde33');;
-        }else if(airLevel>=301){
-            $("#level-warning").text("Hazardous").css('color', '#ffde33');;
-        }
-    </script>
+            //quality indicator label
+            let airLevel = '<%= airQuality %>';
+            if(airLevel>=0 && airLevel<=50){
+                $("#level-warning").text("Good").css('color', '#009966');;
+            }else if(airLevel>=51 && airLevel<=100){
+                $("#level-warning").text("Moderate").css('color', '#ffde33');;
+            }else if(airLevel>=101 && airLevel<=150){
+                $("#level-warning").text("Unhealthy for Sensitive Groups").css('color', '#ff9933');;
+            }else if(airLevel>=151 && airLevel<=200){
+                $("#level-warning").text("Unhealthy").css('color', '#cc0033');;
+            }else if(airLevel>=201 && airLevel<=300){
+                $("#level-warning").text("Very Unhealthy").css('color', '#660099');;
+            }else if(airLevel>=301){
+                $("#level-warning").text("Hazardous").css('color', '#7e0023');;
+            }
+        </script>
+    <% } %>
 </body>
 </html>

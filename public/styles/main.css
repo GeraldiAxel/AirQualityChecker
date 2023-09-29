@@ -51,11 +51,11 @@ form input{
     display: flex;
     flex-direction: column;
     height: 100%;
-    flex-grow: 1.2;
+    flex: 1 1 60%;
 }
 .right-section{
-    width: 33%;
-    flex-shrink: 0;
+    /* width: 33%; */
+    flex: 1 1 40%;
     height: 100%;
     background-color: #202b3b;
     border-radius: 25px;
@@ -96,4 +96,16 @@ form input{
     text-align: center;
     height: 50%;
     gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .main-section{
+        flex-direction: column;
+        height: 100vh;
+        padding: 40px;
+        gap: 20px;
+    }
+    .daily{
+        padding: 40px 40px;
+    }
 }
